@@ -1,0 +1,16 @@
+[Unit]
+Description=Waveshare LCD status display
+After=network.target
+
+[Service]
+Type=simple
+User=arista
+SupplementaryGroups=spi gpio
+WorkingDirectory=/home/arista/Projects/waveshare-ip
+ExecStart=/usr/bin/python3 /home/arista/Projects/waveshare-ip/display_ip.py
+Restart=on-failure
+RestartSec=3
+Environment=PYTHONUNBUFFERED=1
+
+[Install]
+WantedBy=multi-user.target
